@@ -1,0 +1,73 @@
+
+/* Profile section styling */
+.profile-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-info img {
+    border: 2px solid #dee2e6;
+    padding: 5px;
+}
+
+.profile-info p {
+    font-size: 1rem;
+    color: #495057;
+}
+
+.profile-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.profile-info a:hover {
+    text-decoration: underline;
+}
+
+/* Button group styling */
+.btn-group .btn {
+    margin: 0 5px;
+}
+
+/* Stages section styling */
+.stage-section {
+    margin-top: 40px;
+}
+
+.stage-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 20px;
+}
+
+.stage-section .card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stage-section .card-body {
+    padding: 20px;
+}
+
+.stage-section .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+
+.stage-section .table th,
+.stage-section .table td {
+    padding: 12px;
+    vertical-align: middle;
+}
+
+.stage-section .table th {
+    background-color: #f1f1f1;
+}
+
+.stage-section .table a {
+    color: #007bff;
+}
+
+.stage-section .table a:hover {
+    text-decoration: underline;
+}

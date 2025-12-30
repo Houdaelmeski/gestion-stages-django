@@ -1,0 +1,111 @@
+
+{% load static  %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        header,
+        section,
+        footer {
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            background-color: #f8f9fa;
+            padding: 10px;
+            text-align: center;
+        }
+
+        section h2 {
+            border-bottom: 2px solid #343a40;
+            padding-bottom: 5px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+    </style>
+
+    <header>
+        <h1>Stage Details</h1>
+    </header>
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-5 p-3">
+                <section class="mb-4">
+                    <h2 class="section-title">Nom de Stage</h2>
+                    <p>{{ stage.nom }}</p>
+                </section>
+                <section class="mb-4">
+                    <h2 class="section-title">Sujet de Stage</h2>
+                    <p>{{ stage.sujet }}</p>
+                </section>
+                <section class="mb-4">
+                    <h2 class="section-title">Détails Pratiques</h2>
+                    <p><strong>Début :</strong> {{ stage.dateDebut }}<br>
+                        <strong>Fin :</strong> {{ stage.dateFin }}<br>
+                        <strong>Type :</strong> {{ stage.type }}<br>
+                        <strong>Status :</strong> {{ stage.statusStage }}</p>
+                </section>
+                <section class="mb-4">
+                    <h2 class="section-title">Note</h2>
+                    <p><strong>La note :</strong> {{ stage.note }}<br>
+                        {{ stage.commentaire }}</p>
+                </section>
+                <section class="mb-4">
+                    <h2 class="section-title">Source</h2>
+                    <p>{{ stage.source }}</p>
+                </section>
+            </div>
+
+            <div class="col-md-7 p-3">
+                <section class="mb-4">
+                    <div class="row text-center">
+                        <div class="col-md-6 mb-3">
+                            <div class="card">
+                                <a href="{% url 'encadrant' stage.encadrent.id %}" class="">
+                                    <img src="{{encadrant.image.url }}" alt="Profile Picture">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Encadrant</h5>
+                                        <p class="card-text">Nom : {{ encadrant.nom }} {{ encadrant.prenom }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card">
+                                <a href="{% url 'stagiaire' stagiaire.id %}" class="">
+                                <img src="{{stagiaire.image.url }}" alt="Profile Picture">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Stagiaire</h5>
+                                        <p class="card-text">Nom : {{ stagiaire.nom }} {{ stagiaire.prenom }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <section class="mb-4 text-center">
+                        <h2 class="section-title">Encadrent Contact:</h2>
+                        <p>Email : <a href="mailto:{{ stage.encadrent.email }}">{{ stage.encadrent.email }}</a></p>
+                        <p>Téléphone :{{ stage.encadrent.phone }}</p>
+                    </section>
+                </section>
+                <section class="mb-4 text-center">
+                    <h2 class="section-title">Options</h2>
+                    <a href="{% url 'edit_stage' stage.id %}" class="btn btn-warning mr-2">Editer</a>
+                    <a href="{% url 'delete_stage' stage.id %}" class="btn btn-danger">Supprimer</a>
+                </section>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 by HM/KG</p>
+    </footer>

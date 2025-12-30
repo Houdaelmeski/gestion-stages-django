@@ -1,0 +1,138 @@
+{% load static  %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stagiaire Profile</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        header {
+            background: #50b3a2;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .profile, .stages {
+            background: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            margin: 10px;
+        }
+        .profile {
+            text-align: center;
+            max-width: 30%;
+        }
+        .profile img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .profile h2 {
+            margin-top: 10px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            background: #50b3a2;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .buttons button:hover {
+            background: #e8491d;
+        }
+        .stage {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+            
+    <header>
+        <div class="container">
+            <h1>Profile Stagiaire {{ stagiare.nom }} {{ stagiare.prenom }} </h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="profile">
+            {% if stagiare.image %}
+            <img src="{{ stagiare.image.url }}" alt="Profile Picture">
+        {% else %}
+            <img src="{% static 'img/png.png' %}" alt="Default Profile Picture">
+        {% endif %}
+            <h2> Information</h2>
+            <p><strong>Name: </strong> {{ stagiare.nom }} {{ stagiare.prenom }}</p>
+            <p><strong>Email: </strong><a href="mailto:{{ stagiare.email }}">{{ stagiare.email }}</a></p>
+            <p><strong>Num: </strong> {{ stagiare.phone }}</p>
+            <p><strong>Niv: </strong>{{ stagiare.niv }}</p>
+            <p><strong>Ecole: </strong>{{ stagiare.ecole }}</p>
+            <p><strong>L'age: </strong>{{ stagiare.age }}</p>
+            <p><strong>Date de création du compte: </strong>{{ stagiare.date_created }}</p>
+            <div class="buttons">
+                <button onclick="window.location.href='{% url 'delete' %}'">Delete</button>
+                <button onclick="window.location.href='{% url 'logoutt' %}'">Logout</button>
+                <button onclick="window.location.href='{% url 'u_stagiere' stagiare.id  %}'">Edit Profile</button>
+            </div>
+            <h2 class="section-title">Option:</h2>
+        {% for cate1 in cat1 %}
+        <div class="buttons">
+            <button onclick="window.location.href='{% url 'stage' cate1.id %}'">Voire Stage</button>
+            <button onclick="window.location.href='mailto:{{ cat1.encadrent.email }}'">Email au encadrent</button>
+        </div>
+            <section class="mb-4 text-center">
+                <h2 class="section-title">Ecadrent contact:</h2>
+                <p>Email : <a href="mailto:{{ cat1.encadrent.email }}">{{ cate1.encadrent.email }}</a></p>
+                <p>Téléphone :{{ cate1.encadrent.phone }}</p>
+            </section>
+        {% endfor %}
+        </div>
+        <div class="stages">
+       <!-- Assign Stage Section -->
+      <div class="assign-stage stage-section my-5">
+      <h2 class="section-title">Document de Stage</h2>
+       
+        <div class="container">
+    
+    <h3>Uploaded Documents</h3>
+    <ul>
+        {% for document in documents %}
+            <li>
+                {{ document.get_typeDocumment_display }}: 
+                <a href="{{ document.document.url }}">{{ document.document.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+        
+    </div>
+        
+    <div class="buttons">
+<button onclick="window.location.href='{% url 'upload_documents' stagiare.id %}'">Upload document</button>
+      </div> 
+ 

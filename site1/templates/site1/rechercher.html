@@ -1,0 +1,161 @@
+{% extends 'site1/main.html' %}
+
+{% block content %}
+{% load static %}
+    {% include 'site1/secondchild.html' %}
+    <title>Résultats de recherche des stages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            margin: 0;
+            padding: 10px 20px;
+            font-size: 1.8em;
+            color: white;
+            background-color: #007bff;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .search-container {
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+
+        .search-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* espace entre les éléments */
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 200px; /* ajustez si nécessaire */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .search-select {
+            min-width: 200px; /* ajustez si nécessaire */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        @media (max-width: 768px) {
+            .search-input, .search-select {
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Résultats de recherche des stages</h1>
+        <div class="search-container">
+            <form method="GET" action="" class="search-form">
+                <input type="text" name="nom_stage" class="search-input" placeholder="Nom du Stage" value="{{ request.GET.nom_stage }}">
+                <input type="text" name="encadrant" class="search-input" placeholder="Encadrant" value="{{ request.GET.encadrant }}">
+                <input type="text" name="stagiaire" class="search-input" placeholder="Stagiaire" value="{{ request.GET.stagiaire }}">
+                <select name="type_stage" class="search-select">
+                    <option value="">Type de Stage</option>
+                    <option value="Observation" {% if request.GET.type_stage == "Observation" %}selected{% endif %}>Observation</option>
+                    <option value="Application" {% if request.GET.type_stage == "Application" %}selected{% endif %}>Application</option>
+                    <option value="Embouchement" {% if request.GET.type_stage == "Embouchement" %}selected{% endif %}>Embouchement</option>
+                </select>
+                <button type="submit" class="btn">Rechercher</button>
+            </form>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom du Stage</th>
+                    <th>Encadrant</th>
+                    <th>Stagiaire</th>
+                    <th>Type de Stage</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stage in stages %}
+                <tr>
+                    <td><a href="{% url 'stage' stage.id %}" class="shop-now">
+                        {{ stage.nom }}
+                    </a></td>
+                    <td>{{ stage.encadrent.nom }} {{ stage.encadrent.prenom }}</td>
+                    <td>{{ stage.stagiaire.nom }} {{ stage.stagiaire.prenom }}</td>
+                    <td>{{ stage.get_type_display }}</td>
+                    <td>{{ stage.dateDebut }}</td>
+                    <td>{{ stage.dateFin }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">Aucun résultat trouvé</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+{% endblock %}

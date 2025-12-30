@@ -1,0 +1,125 @@
+{% load static  %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encadrent Profile</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        header {
+            background: #50b3a2;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .profile, .stages {
+            background: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            margin: 10px;
+        }
+        .profile {
+            text-align: center;
+            max-width: 30%;
+        }
+        .profile img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .profile h2 {
+            margin-top: 10px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            background: #50b3a2;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .buttons button:hover {
+            background: #e8491d;
+        }
+        .stage {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    <header>
+        <div class="container">
+            <h1>Profile Encadrent {{ encad.nom }} {{ encad.prenom }} </h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="profile">
+
+            {% if encad.image  %}
+            <img src="{{ encad.image.url }}" alt="Profile Picture">
+        {% else %}
+            <img src="{% static 'img/png.png' %}" alt="Default Profile Picture">
+        {% endif %}
+            <h2> Information</h2>
+            <p><strong>Name:</strong> {{ encad.nom }} {{ encad.prenom }}</p>
+            <p><strong>Email:</strong><a href="mailto:{{ encad.email }}">{{ encad.email }}</a></p>
+            <p><strong>Post:</strong> {{ encad.post }}</p>
+            <p><strong>Num:</strong> {{ encad.phone }}</p>
+            <p><strong>Numéro de stages actifs ::</strong> {{ encad.numStageActf }}</p>
+            <p><strong>Numéro de stages passifs ::</strong>{{ encad.NumStagePassif }}</p>
+            <p><strong>Date de création du compte ::</strong> {{ encad.date_created }}</p>
+            <div class="buttons">
+                <button onclick="window.location.href='{% url 'u_encadrent' encad.id %}'">Edit Profile</button>
+                <button onclick="window.location.href='{% url 'logoutt' %}'">Logout</button>
+                <button onclick="window.location.href='{% url 'delete' %}'">Delete</button>
+            </div>
+        </div>
+        <div class="stages">
+        <h2>Stages :</h2>
+        {% for item in cat1 %}
+            
+            
+            <div class="stage">
+            <a href="{% url 'stage' item.id %}" class="text-decoration-none">
+                <p><strong>Stage Title:</strong> {{ item.nom }}</p>
+                <p><strong>Type:</strong> {{ item.type }}</p>
+                <p><strong>Datefin:</strong>{{ item.dateFin }}</p>
+                <p><strong>Etat:</strong><span class="badge 
+                                                {% if item.statusStage == 'Actif' %} badge-success 
+                                                {% elif item.statusStage == 'Inactif' %} badge-secondary 
+                                                {% else %} badge-warning {% endif %}">
+                                                {{ item.statusStage }}
+                                            </span></p></a>
+            </div>
+            <!-- Add more stages as needed -->
+            {% endfor %}
+        </div>
+    </div>
+    

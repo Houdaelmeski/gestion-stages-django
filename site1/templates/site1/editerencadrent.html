@@ -1,0 +1,45 @@
+
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/formcreeStage.css' %}">
+
+<div class="form-container">
+    <form action="" method="POST" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="name">{{ form.nom.label }}</label>
+            {{ form.nom }}
+        </div>
+        <div class="form-group">
+            <label for="name">{{ form.prenom.label }}</label>
+            {{ form.prenom }}
+        </div>
+        <div class="form-group">
+            <label for="email">{{ form.email.label }}</label>
+            {{ form.email }}
+        </div>
+        <div class="form-group">
+            <label for="text">{{ form.post.label }}</label>
+            {{ form.post }}
+        </div>
+        <div class="form-group">
+            <label for="number">{{ form.phone.label }}</label>
+            {{ form.phone }}
+        </div>
+        <div class="form-group">
+            <label for="file">{{ form.image.label }}</label>
+            {{ form.image }}
+        </div>
+       
+        
+        <div class="form-error">
+            {{ form.errors }}
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Confirmer</button>
+    </form>
+</div>
+
+{% endblock %}

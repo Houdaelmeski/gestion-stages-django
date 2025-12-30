@@ -1,0 +1,206 @@
+/* Footer Styling */
+
+.unique-footer {
+    background: linear-gradient(to top, #8bffaa, #ffffff00);
+      color: #212529;
+      padding: 20px 0;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      margin-top: 300px;
+  }
+  
+  .unique-footer .containero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 1200px;
+      margin: auto;
+      
+  }
+  
+  .unique-footer .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 20px;
+  }
+  
+  .unique-footer .footer-section {
+      flex: 1;
+      padding: 20px;
+      min-width: 250px;
+  }
+  
+  .unique-footer .footer-section h2 {
+      font-size: 18px;
+      margin-bottom: 20px;
+  }
+  
+  .unique-footer .footer-section p {
+      font-size: 14px;
+      line-height: 1.6;
+  }
+  
+  .unique-footer .footer-section .contact span {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+  }
+  
+  .unique-footer .footer-section .contact i {
+      margin-right: 10px;
+  }
+  
+  .unique-footer .footer-section .links ul {
+      list-style: none;
+      padding: 0;
+  }
+  
+  .unique-footer .footer-section .links ul a {
+      text-decoration: none;
+  
+  
+  
+      color: #212529;
+      font-size: 14px;
+      margin-bottom: 10px;
+      display: block;
+      transition: color 0.3s;
+  }
+  
+  .unique-footer .footer-section .links ul a:hover {
+      color: #1abc9c;
+  }
+  
+  .unique-footer .footer-section .social .social-links a {
+      margin-right: 10px;
+      font-size: 20px;
+      color: #212529;
+      transition: color 0.3s;
+  }
+  
+  .unique-footer .footer-section .social .social-links a:hover {
+      color: #212529;
+  }
+  
+  .unique-footer .footer-bottom {
+      text-align: center;
+      padding: 10px;
+      border-top: 1px solid #212529;
+      font-size: 14px;
+      margin-top: 20px;
+  }
+  
+  @media (max-width: 768px) {
+      .unique-footer .footer-content {
+          flex-direction: column;
+      }
+  
+      .unique-footer .footer-section {
+          margin-bottom: 20px;
+      }
+  }
+  
+  .wrapper {
+    display: inline-flex;
+    list-style: none;
+    height: 120px;
+    width: 100%;
+    padding-top: 40px;
+    font-family: "Poppins", sans-serif;
+    justify-content: center;
+  }
+  
+  .wrapper .icon {
+    position: relative;
+    background: #fff;
+    border-radius: 50%;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 20px;
+    background: #fff;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip::before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    background: #fff;
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .icon:hover .tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  .wrapper .icon:hover span,
+  .wrapper .icon:hover .tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wrapper .facebook:hover,
+  .wrapper .facebook:hover .tooltip,
+  .wrapper .facebook:hover .tooltip::before {
+    background: #1877f2;
+    color: #fff;
+  }
+  
+  .wrapper .twitter:hover,
+  .wrapper .twitter:hover .tooltip,
+  .wrapper .twitter:hover .tooltip::before {
+    background: #1da1f2;
+    color: #fff;
+  }
+  
+  .wrapper .instagram:hover,
+  .wrapper .instagram:hover .tooltip,
+  .wrapper .instagram:hover .tooltip::before {
+    background: #e4405f;
+    color: #fff;
+  }
+  
+  /* 
+  body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh; /* Assure que le corps prend au moins 100% de la hauteur de la fenêtre */
+      /* position: relative; /* Position relative pour permettre un positionnement absolu du footer */
+      /* 
+        background: linear-gradient(to top, #87CEFA, #E0FFFF); /* Light blue to light cyan gradient */
+        /* font-family: 'Arial', sans-serif;
+        color: #333;
+    /* 
+  }
+   */

@@ -1,0 +1,41 @@
+
+
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+.profile, .assign-stage, .assigned-stages {
+    flex: 1;
+    margin: 0 10px;
+}
+.profile img {
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.profile-info {
+    max-width: 500px;
+}
+.stage-section {
+    margin-bottom: 20px;
+}
+.stage-list {
+    list-style-type: none;
+    padding: 0;
+}
+.stage-list li {
+    background-color: #f4f4f4;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+.assign-stage form {
+    display: flex;
+    flex-direction: column;
+}
+.assign-stage select {
+    margin-bottom: 10px;
+}
+button {
+    width: fit-content;
+}

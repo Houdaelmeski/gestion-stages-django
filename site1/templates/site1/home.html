@@ -1,0 +1,125 @@
+{% extends 'site1/main.html' %}
+
+{% block content %}
+{% load static %}
+
+
+{% include 'site1/secondchild.html' %}
+
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        h2 {
+            padding-top: 20px;
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+        }
+
+        .card {
+            margin-top: 20px;
+        }
+    </style>
+
+    <div class="container">
+        <h2 class="pt-5">Stage En cours:</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Date Fin</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Encadrent</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cat1 %}
+                <tr>
+                    <td>
+                        <a href="{% url 'stage' item.id %}" class="shop-now">
+                            {{ item.nom }}
+                        </a>
+                    </td>
+                    <td>{{ item.type }}</td>
+                    <td>{{ item.dateFin }}</td>
+                    <td>{{ item.statusStage }}</td>
+                    <td>{{ item.encadrent.nom }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2 class="pt-5">Encadrant:</h2>
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Post</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cat2 %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'encadrant' item.id %}" class="shop-now">
+                                    {{ item.nom }}
+                                </a>
+                            </td>
+                            <td>{{ item.prenom }}</td>
+                            <td>{{ item.post }}</td>
+                            {% comment %} <td>{{ encadrent.num_stages }}</td> {% endcomment %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <h2 class="pt-5">Nouveau Etudiant:</h2>
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Ecole</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in recent_stagiaires %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'stagiaire' item.id %}" class="shop-now">
+                                    {{ item.nom }}
+                                </a>
+                            </td>
+                            <td>{{ item.prenom }}</td>
+                            <td>{{ item.ecole }}</td>
+                            {% comment %} <td>{{ encadrent.num_stages }}</td> {% endcomment %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
