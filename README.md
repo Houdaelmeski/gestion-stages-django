@@ -1,238 +1,193 @@
+🎓 Système de Gestion des Stages
 
-# 🎓 Système de Gestion des Stages
+Application web dédiée à la centralisation et à l’automatisation de la gestion des stages au sein d’une organisation.
 
-Application web de gestion complète des stages développée pour le **Ministère de l'Agriculture, de la Pêche Maritime, du Développement Rural et des Eaux et Forêts** (Maroc).
+La plateforme permet de gérer les stagiaires, les encadrants, les périodes de stage ainsi que les documents associés à travers un système de rôles et un tableau de bord administratif.
 
-Cette solution permet de centraliser et automatiser la gestion des stages après admission des stagiaires, du suivi administratif jusqu'à l'évaluation finale.
+📋 Présentation générale
 
----
+Période de développement : Juillet 2024 – Août 2024
+Type de projet : Application web de gestion des stages
 
-## 📋 Vue d'ensemble
+L’application couvre l’ensemble du cycle de vie d’un stage, depuis l’intégration du stagiaire jusqu’au suivi administratif, avec un système d’accès multi-rôles.
 
-**Période de développement** : Juillet 2024 – Août 2024  
-**Contexte** : Stage au Ministère de l'Agriculture, de la Pêche Maritime, du Développement Rural et des Eaux et Forêts
+✨ Fonctionnalités principales
+👥 Gestion des utilisateurs
 
-L'application couvre la gestion complète du cycle de vie d'un stage avec un système de rôles multi-niveaux et un tableau de bord administratif pour le suivi en temps réel.
+Système multi-rôles : Administrateur, Encadrant, Stagiaire
 
----
+Authentification sécurisée et gestion des sessions
 
-## ✨ Fonctionnalités principales
+Gestion des permissions basée sur les rôles (RBAC)
 
-### 👥 Gestion des utilisateurs
-- **Trois types de rôles** : Administrateur, Encadrant, Stagiaire
-- Authentification sécurisée et gestion des sessions
-- Profils utilisateurs personnalisés avec permissions granulaires
+Profils utilisateurs personnalisés
 
-### 📊 Gestion des stages
-- Création et suivi des stages avec statuts (En cours, Terminé, Suspendu)
-- Affectation automatique ou manuelle des encadrants aux stagiaires
-- Calendrier et planning des stages
-- Historique complet des modifications
+📊 Gestion des stages
 
-### 📁 Gestion documentaire
-- Téléversement sécurisé des documents :
-  - CV et lettre de motivation
-  - Convention de stage
-  - Rapports de stage (intermédiaire et final)
-  - Attestation d'assurance
-  - Certificats et autres documents
-- Stockage organisé et sécurisé
-- Système de validation des documents
+Création et suivi des stages avec gestion des statuts
 
-### 🔍 Recherche et consultation
-- Recherche avancée par critères multiples
-- Filtres dynamiques (période, encadrant, statut, département)
-- Export des données en format Excel/PDF
-- Statistiques et rapports analytiques
+Affectation des encadrants aux stagiaires
 
-### 📈 Tableau de bord administratif
-- Vue d'ensemble en temps réel
-- Indicateurs clés de performance (KPI)
-- Graphiques et visualisations
-- Notifications et alertes
+Gestion des périodes et plannings de stage
 
----
+Historique et traçabilité des actions
 
-## 🛠️ Technologies utilisées
+📁 Gestion documentaire
 
-### Backend
-- **Django 4.x** - Framework web Python
-- **Django ORM** - Gestion de la base de données
-- **Django Authentication** - Système d'authentification
+Téléversement sécurisé des documents liés au stage :
 
-### Frontend
-- **HTML5 / CSS3** - Structure et design
-- **JavaScript** - Interactivité
-- **Bootstrap** (optionnel) - Framework CSS responsive
+CV et lettre de motivation
 
-### Base de données
-- **SQLite** - Développement
-- **PostgreSQL** - Production (recommandé)
+Convention de stage
 
-### Conception
-- **UML** - Diagrammes de cas d'utilisation, classes et séquences
-- **Merise** - Modélisation de la base de données
+Rapports de stage
 
----
+Attestation d’assurance
 
-## 📁 Structure du projet
+Autres documents justificatifs
 
-\`\`\`
-stagiere1/
+Organisation et validation des documents
+
+🔍 Recherche et consultation
+
+Recherche avancée multi-critères
+
+Filtres dynamiques (période, encadrant, statut)
+
+Export des données (Excel / PDF)
+
+Synthèses et rapports analytiques
+
+📈 Tableau de bord administratif
+
+Vue d’ensemble de l’activité
+
+Indicateurs clés de suivi
+
+Graphiques et visualisations interactives
+
+Notifications et alertes
+
+🛠️ Technologies utilisées
+Backend
+
+Django – Framework web Python
+
+Django ORM – Gestion de la base de données
+
+Système d’authentification Django
+
+Frontend
+
+HTML5 / CSS3
+
+JavaScript
+
+Bootstrap – Interface responsive
+
+Base de données
+
+SQLite (environnement de développement)
+
+PostgreSQL (environnement de production)
+
+Conception
+
+UML – Diagrammes de cas d’utilisation, classes et séquences
+
+Merise – Modélisation relationnelle
+
+📁 Structure du projet
+project-root/
 │
-├── site1/                      # Application principale
-│   ├── migrations/             # Migrations de base de données
-│   ├── templates/              # Templates HTML
-│   ├── admin.py               # Configuration admin Django
-│   ├── models.py              # Modèles de données
-│   ├── views.py               # Vues et logique métier
-│   ├── forms.py               # Formulaires Django
-│   ├── urls.py                # Routes URL
-│   └── decorators.py          # Décorateurs personnalisés
+├── core/                      # Application principale
+│   ├── migrations/
+│   ├── templates/
+│   ├── admin.py
+│   ├── models.py
+│   ├── views.py
+│   ├── forms.py
+│   ├── urls.py
+│   └── decorators.py
 │
-├── stagiere1/                  # Configuration du projet
-│   ├── settings.py            # Paramètres Django
-│   ├── urls.py                # URLs principales
-│   └── wsgi.py                # Configuration WSGI
+├── config/                    # Configuration du projet
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
 │
-├── static/                     # Fichiers statiques
-│   ├── css/                   # Feuilles de style
-│   ├── js/                    # Scripts JavaScript
-│   └── img/                   # Images
+├── static/
+│   ├── css/
+│   ├── js/
+│   └── img/
 │
-├── profile/                    # Gestion des profils
-│
-├── manage.py                   # Script de gestion Django
-├── .gitignore                 # Fichiers à ignorer
-└── README.md                  # Ce fichier
-\`\`\`
+├── manage.py
+├── .gitignore
+└── README.md
 
----
+🚀 Installation et configuration
+Prérequis
 
-## 🚀 Installation et configuration
+Python 3.8 ou plus
 
-### Prérequis
+pip
 
-- Python 3.8 ou supérieur
-- pip (gestionnaire de paquets Python)
-- Git
+Git
 
-### Installation
+Installation
+git clone https://github.com/votre-username/votre-repo.git
+cd votre-repo
 
-\`\`\`bash
-# 1. Cloner le dépôt
-git clone https://github.com/Houdaelmeski/django-internship-management.git
-cd django-internship-management
-
-# 2. Créer un environnement virtuel
 python -m venv venv
+venv\Scripts\activate   # Windows
+source venv/bin/activate # Linux / Mac
 
-# 3. Activer l'environnement virtuel
-# Windows :
-venv\Scripts\activate
-# Linux / Mac :
-source venv/bin/activate
-
-# 4. Installer les dépendances
 pip install -r requirements.txt
 
-# 5. Configurer les variables d'environnement
-# Créer un fichier .env à la racine du projet
-# SECRET_KEY=votre_clé_secrète
-# DEBUG=True
-# DATABASE_URL=sqlite:///db.sqlite3
-
-# 6. Appliquer les migrations
 python manage.py makemigrations
 python manage.py migrate
-
-# 7. Créer un superutilisateur
 python manage.py createsuperuser
-
-# 8. Collecter les fichiers statiques
-python manage.py collectstatic
-
-# 9. Lancer le serveur de développement
 python manage.py runserver
-\`\`\`
-
-L'application sera accessible à l'adresse : **http://localhost:8000**
-
----
-
-## 👤 Utilisation
-
-### Accès administrateur
-1. Connectez-vous à l'interface admin : http://localhost:8000/admin
-2. Utilisez les identifiants du superutilisateur créé
-
-### Création d'utilisateurs
-1. L'administrateur crée les comptes encadrants et stagiaires
-2. Les utilisateurs reçoivent leurs identifiants par email
-3. Première connexion avec changement de mot de passe obligatoire
-
-### Gestion d'un stage
-1. L'administrateur crée un nouveau stage
-2. Affecte un encadrant au stage
-3. Le stagiaire téléverse ses documents
-4. L'encadrant suit l'avancement
-5. Validation et clôture du stage
-
----
-
-## 🔐 Sécurité
-
-- Authentification obligatoire pour toutes les pages sensibles
-- Gestion des permissions par rôle (RBAC)
-- Protection CSRF activée
-- Validation des fichiers uploadés (type, taille)
-- Sanitisation des entrées utilisateur
-- Stockage sécurisé des mots de passe (hashage)
-
----
-
-## 📊 Modèle de données
-
-### Entités principales
-- **User** : Utilisateurs du système (hérite de AbstractUser)
-- **Stagiaire** : Informations des stagiaires
-- **Encadrant** : Informations des encadrants
-- **Stage** : Détails des stages
-- **Document** : Documents associés aux stages
-- **Affectation** : Relations encadrant-stagiaire
-
----
 
 
+L’application est accessible à l’adresse : http://localhost:8000
 
----
+🔐 Sécurité
 
-## 📝 Licence
+Authentification requise pour les pages protégées
 
-Ce projet a été développé dans le cadre d'un stage au Ministère de l'Agriculture, de la Pêche Maritime, du Développement Rural et des Eaux et Forêts.
+Gestion des accès par rôles
 
----
+Protection CSRF
 
-## 👨‍💻 Auteur
+Validation des fichiers téléversés (type et taille)
 
-**Houda Elmeski**  
-Étudiante en Ingénierie - École Marocaine des Sciences de l'Ingénieur
+Hashage sécurisé des mots de passe
 
-- GitHub : [@Houdaelmeski](https://github.com/Houdaelmeski)
-- LinkedIn : Houda El MESKI
+Nettoyage des entrées utilisateur
 
----
+📊 Modèle de données (entités principales)
 
-## 🙏 Remerciements
+User – Utilisateurs du système
 
-Je tiens à remercier le **Ministère de l'Agriculture, de la Pêche Maritime, du Développement Rural et des Eaux et Forêts** pour l'opportunité de réaliser ce projet et pour leur accompagnement tout au long du stage.
+Stagiaire – Profils des stagiaires
 
----
+Encadrant – Profils des encadrants
 
-## 📞 Support
+Stage – Informations des stages
 
-Pour toute question ou suggestion, n'hésitez pas à ouvrir une issue sur GitHub ou à me contacter directement.
+Document – Documents associés
 
----
+Affectation – Relations stagiaire–encadrant
 
-**⭐ Si ce projet vous a été utile, n'hésitez pas à lui donner une étoile sur GitHub !**
+📝 Licence
+
+Projet développé dans le cadre d’un projet académique.
+
+👩‍💻 Auteur
+
+Houda El Meski
+Étudiante ingénieure en informatique
+
+GitHub : @HoudaElmeski
+
+LinkedIn : Houda El MESKI
